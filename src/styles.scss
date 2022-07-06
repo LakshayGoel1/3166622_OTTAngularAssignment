@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background: url('/assets/images/ott-inside-background.jpg'); 
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover; 
+    top: 0; 
+    left: 0; 
+    min-width: 80%;
+    min-height: 100%;
+}

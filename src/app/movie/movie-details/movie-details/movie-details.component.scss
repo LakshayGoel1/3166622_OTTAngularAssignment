@@ -1,0 +1,49 @@
+.movie-details {
+    margin: auto;
+    width: 200px;
+    height: 300px;
+}
+
+.movie-details img {
+    height: 100%;
+    width: 100%;
+}
+
+.form-group {
+    text-align: center;
+}
+
+
+
+.input-fields {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color: #AAD3FF;
+    outline: none;
+  }
+
+.movie-reviews{
+    background-color: black;
+    font-size: 30px;
+    color: teal;
+}
+
+.user-review {
+    background-color: #AAD3FF;
+}
+
+.movie-details-form {
+    text-indent: 0%;
+}
+
+.movie-details-items {
+    text-align: left;
+    margin-left: 125px;
+}
+
+.movie-details-parent {
+    display: inline-table;
+    text-align: center;
+}

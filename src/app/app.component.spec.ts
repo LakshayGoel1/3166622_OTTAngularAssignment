@@ -1,16 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SessionStorageService } from 'ngx-store';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule, SharedModule
       ],
       declarations: [
         AppComponent
       ],
+      providers: [SessionStorageService]
     }).compileComponents();
   });
 
@@ -20,16 +23,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'OTTAngularAssignment'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('OTTAngularAssignment');
-  });
-
-  it('should render title', () => {
+  it('should render Bro-flix', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('OTTAngularAssignment app is running!');
+    expect(compiled.querySelector('h2')?.textContent).toContain('Bro-flix');
   });
 });

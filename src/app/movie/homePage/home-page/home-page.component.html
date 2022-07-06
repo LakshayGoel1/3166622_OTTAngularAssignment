@@ -1,0 +1,40 @@
+<div>
+  <div>
+    <div class="optInPrime">
+      <button type="button" [ngClass]="{'primeButton': primeMembershipStatus}" (click)="optInPrime()"
+              *ngIf="loggedInUser && !isAdmin">
+        <span>{{primeMembershipValue}}</span>
+      </button>
+    </div>
+    <div class="search"><input [(ngModel)]="searchText" type="text" placeholder="Search.." name="search2">
+      <button type="submit" class="search-button"><i class="fa fa-search"></i>
+      </button>
+    </div>
+    <select class="watchlist" *ngIf="loggedInUser && !isAdmin">
+      <option selected>My Watchlist ({{watchList?.length}})</option>
+      <option disabled *ngFor="let movie of watchList" [ngValue]="movie">{{movie}}</option>
+    </select>
+    <button type="button" class="logout" (click)="login()" *ngIf="!loggedInUser">
+      <span>Login</span>
+    </button>
+    <button type="button" class="logout" (click)="logout()" *ngIf="loggedInUser">
+      <span>Logout</span>
+    </button>
+
+    <ul>
+      <li *ngFor="let movie of movieList | filter: searchText" class="movie-list">
+        <button type="button" (click)="showMovieDetails(movie.id)">
+          <img src="{{movie.imageUrl}}" class="movie-image">
+          <br>
+          <span class="name">{{movie.name}}</span>
+        </button>
+
+      </li>
+      <button type="button" (click)="addMovieToMovieList()" *ngIf="isAdmin">
+        <img src="/assets/images/add-bg.jpeg" class="add-image">
+        <br>
+        <span class="name">Add new item</span>
+      </button>
+    </ul>
+  </div>
+</div>

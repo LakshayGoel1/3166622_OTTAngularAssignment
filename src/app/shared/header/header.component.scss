@@ -1,0 +1,27 @@
+.header {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, 'Arial Narrow', Arial, sans-serif;
+    font-size: 46px;
+    position: sticky;
+    top: 0;
+    color: crimson; 
+    text-align:center;
+    vertical-align: middle;
+    padding-left: 500px;
+}
+
+.logout {
+    text-align: end;
+    position: absolute;
+    top:10px; 
+    right: 10px;
+}
+
+.fa-home {
+    color: red;
+    cursor: pointer;
+    text-align: start;
+    top:50px; 
+    left: 40px;
+    font-size: 32px;
+    padding: 40px;
+}

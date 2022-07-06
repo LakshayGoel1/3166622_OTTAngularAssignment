@@ -1,0 +1,115 @@
+<div class="background">
+  <form class="movie-details-form" [formGroup]="addMovieForm" class="form-group">
+    <div class="movie-details-parent">
+      <div class="movie-details">
+        <span><img src="{{imageUrl}}"></span>
+      </div>
+      <br>
+      <div class="movie-details-items">
+        <label for="name"><b>Name: </b></label>
+        <input id="name" type="text"
+               [ngClass]="{'input-fields':currentMovie, 'is-invalid': submitted && f['name'].errors}"
+               formControlName="name" [readonly]="currentMovie">
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+          <div *ngIf="f['name'].errors['required']" style="color:red">Name is required</div>
+        </div>
+      </div>
+      <br>
+
+      <div class="movie-details-items">
+        <label for="title"><b>Title: </b></label>
+        <input id="title" type="text"
+               [ngClass]="{'input-fields':currentMovie, 'is-invalid': submitted && f['title'].errors}"
+               formControlName="title" [readonly]="currentMovie">
+        <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+          <div *ngIf="f['title'].errors['required']" style="color:red">Title is required</div>
+        </div>
+      </div>
+      <br>
+
+      <div class="movie-details-items">
+        <label for="description"><b>Description: </b></label>
+        <input id="description" type="text"
+               [ngClass]="{'input-fields':currentMovie, 'is-invalid': submitted && f['description'].errors}"
+               formControlName="description" [readonly]="currentMovie">
+        <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+          <div *ngIf="f['description'].errors['required']" style="color:red">Description is required</div>
+        </div>
+      </div>
+      <br>
+
+      <div class="movie-details-items">
+        <label for="imdb-rating"><b>IMDB Rating: </b></label>
+        <input id="imdb-rating" type="number"
+               [ngClass]="{'input-fields':currentMovie, 'is-invalid': submitted && f['imdbRating'].errors}"
+               formControlName="imdbRating" [readonly]="currentMovie">
+        <div *ngIf="submitted && f['imdbRating'].errors" class="invalid-feedback">
+          <div *ngIf="f['imdbRating'].errors['required']" style="color:red">IMDB Rating is required</div>
+        </div>
+      </div>
+      <br>
+
+      <div class="movie-details-items">
+        <label for="language"><b>Language: </b></label>
+        <input id="language" type="text"
+               [ngClass]="{'input-fields':currentMovie, 'is-invalid': submitted && f['language'].errors}"
+               formControlName="language" [readonly]="currentMovie">
+        <div *ngIf="submitted && f['language'].errors" class="invalid-feedback">
+          <div *ngIf="f['language'].errors['required']" style="color:red">Language is required</div>
+        </div>
+      </div>
+      <br>
+
+      <div class="movie-details-items">
+        <label for="genre"><b>Genre: </b></label>
+        <input id="genre" type="text"
+               [ngClass]="{'input-fields':currentMovie, 'is-invalid': submitted && f['genre'].errors}"
+               formControlName="genre" [readonly]="currentMovie">
+        <div *ngIf="submitted && f['genre'].errors" class="invalid-feedback">
+          <div *ngIf="f['genre'].errors['required']" style="color:red">Genre is required</div>
+        </div>
+      </div>
+      <br><br>
+
+
+      <button type="button" (click)="watchNow()" *ngIf="!isAdmin" [disabled]="watched">
+        <span>{{watchStatus}}</span>
+      </button>
+      <button type="button" (click)="watchLater()" *ngIf="!isAdmin && !markedAsWatchLater"
+              [disabled]="addedToWatchlist">
+        <span>Watch Later</span>
+      </button>
+      <button type="button" *ngIf="!isAdmin && markedAsWatchLater" [disabled]="true">
+        <span>Marked as watch later</span>
+      </button>
+    </div>
+    <br>
+    <span *ngIf="addedToWatchlist"
+          style="color: green; text-align: center">&#10004; Movie added to your watchlist</span>
+
+    <button type="button" (click)="saveMovie()" *ngIf="isAdmin && !currentMovie">
+      <span>Save</span>
+    </button>
+  </form>
+  <br>
+  <div style="text-align: center;"
+       *ngIf="userReviewList.length>0 || watchStatus==='Watched' || watchStatus==='Watch Again'">
+    <span style="font-size: 30px; color: teal"><b>Movie Reviews</b></span>
+    <br>
+  </div>
+  <div *ngIf="watchStatus==='Watched' || watchStatus==='Watch Again'" style="text-align: center;">
+
+    <textarea [(ngModel)]="userReview" cols="108" rows="4"></textarea>
+    <button style="vertical-align: top; margin-left: 10px;" type="button" (click)="addReview()">
+      <span>Add Review</span>
+    </button>
+
+  </div>
+  <div style="text-align: left; padding-left: 4%;" *ngIf="userReviewList.length>0">
+    <br>
+    <div *ngFor="let review of userReviewList">
+      <span style="vertical-align: top; color: chartreuse; font-size: 20px; background-color: black;"><b>{{review.username}}:</b></span>&nbsp;
+      <textarea cols="40" rows="2" disabled class="user-review">{{review.userReview}}</textarea>
+    </div>
+  </div>
+</div>
